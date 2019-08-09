@@ -32,7 +32,6 @@
   "homepage": "https://github.com/matheuss/google-translate-api#readme",
   "dependencies": {
     "axios": "^0.19.0",
-    "configstore": "^2.0.0",
     "google-translate-token": "git+https://github.com/InnerPeace080/google-translate-token.git"
   },
   "devDependencies": {
