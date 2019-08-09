@@ -1,6 +1,6 @@
 var querystring = require('querystring');
 
-var got = require('got');
+var axios = require('axios');
 var safeEval = require('safe-eval');
 var token = require('google-translate-token');
 
@@ -30,9 +30,9 @@ function translate(text, opts) {
     opts.to = languages.getCode(opts.to);
 
     return token.get(text).then(function (token) {
-        var url = 'https://translate.google.com/translate_a/single';
+        var url = 'https://translate.googleapis.com/translate_a/single';
         var data = {
-            client: 't',
+            client: 'gtx',
             sl: opts.from,
             tl: opts.to,
             hl: opts.to,
@@ -49,7 +49,11 @@ function translate(text, opts) {
 
         return url + '?' + querystring.stringify(data);
     }).then(function (url) {
-        return got(url).then(function (res) {
+        return axios.request({
+            method: 'GET',
+            url: url
+        })
+        .then(function (res) {
             var result = {
                 text: '',
                 from: {
@@ -65,12 +69,7 @@ function translate(text, opts) {
                 },
                 raw: ''
             };
-
-            if (opts.raw) {
-                result.raw = res.body;
-            }
-
-            var body = safeEval(res.body);
+            var body = res.data;
             body[0].forEach(function (obj) {
                 if (obj[0]) {
                     result.text += obj[0];
@@ -101,14 +100,7 @@ function translate(text, opts) {
 
             return result;
         }).catch(function (err) {
-            var e;
-            e = new Error();
-            if (err.statusCode !== undefined && err.statusCode !== 200) {
-                e.code = 'BAD_REQUEST';
-            } else {
-                e.code = 'BAD_NETWORK';
-            }
-            throw e;
+            throw err;
         });
     });
 }
