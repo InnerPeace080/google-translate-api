@@ -2055,6 +2055,13 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
+"google-translate-token@git+https://github.com/InnerPeace080/google-translate-token.git":
+  version "1.0.0"
+  resolved "git+https://github.com/InnerPeace080/google-translate-token.git#9ee734dec6c7e57b9378a253abbe1eef66fb3bf7"
+  dependencies:
+    axios "^0.19.0"
+    configstore "^2.0.0"
+
 google-translate-token@latest:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/google-translate-token/-/google-translate-token-1.0.0.tgz#be943445786f00c3765dec31f490dac21228d3f8"
@@ -3849,10 +3856,6 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.2:
 safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
-
-safe-eval@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/safe-eval/-/safe-eval-0.3.0.tgz#06ce111eebd9c185abaff008ec0fcffc5c5be00c"
 
 safe-regex@^1.1.0:
   version "1.1.0"
