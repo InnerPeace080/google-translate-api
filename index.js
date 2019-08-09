@@ -1,7 +1,6 @@
 var querystring = require('querystring');
 
 var axios = require('axios');
-var safeEval = require('safe-eval');
 var token = require('google-translate-token');
 
 var languages = require('./languages');
